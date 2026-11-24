@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<main class="wrap narrow"><section class="card"><h1>नोंदणी Delete करायची?</h1><p>{{ item.full_name }} – {{ item.mobile }}</p><form method="post">{% csrf_token %}<button class="primary-btn danger">होय, Delete करा</button> <a class="outline-btn" href="{% url 'dashboard' %}">Cancel</a></form></section></main>{% endblock %}

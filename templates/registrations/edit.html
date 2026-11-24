@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<main class="wrap narrow"><section class="card"><h1>नोंदणी Edit करा</h1><form method="post">{% csrf_token %}{{ form.as_p }}<button class="primary-btn">Save Changes</button></form></section></main>{% endblock %}

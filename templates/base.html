@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}दत्त जयंती सप्ताह{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% if messages %}<div class="messages">{% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}</div>{% endif %}
+{% block content %}{% endblock %}
+<footer class="site-footer">
+  <strong>अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ</strong>
+  <div>श्री स्वामी समर्थ सेवा केंद्र, सरुड</div>
+  <p>दत्त जयंती सप्ताह सेवेकरी नावनोंदणी अधिकृत पोर्टल</p>
+  <small>© 2026 अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ. सर्व हक्क सुरक्षित.</small>
+  <div class="footer-admin"><a href="{% url 'admin_login' %}">Admin Portal</a></div>
+</footer>
+</body></html>
