@@ -1,7 +1,171 @@
-{% extends "base.html" %}{% block title %}Admin Dashboard{% endblock %}{% block content %}
-<header class="admin-header"><div><b>अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ</b><small>Admin Dashboard</small></div><a href="{% url 'admin_logout' %}">Logout</a></header>
-<main class="wrap admin-wrap"><h1>Admin Dashboard</h1><div class="stat-card"><span>Total Registrations</span><strong>{{ total }}</strong></div>
-<div class="toolbar"><form method="get" class="search-form"><input name="q" value="{{ q }}" placeholder="नाव किंवा मोबाईल नंबर शोधा"><button class="primary-btn small-btn">Search</button></form><div class="export-links"><a href="{% url 'export_pdf' %}">PDF Download</a><a href="{% url 'export_excel' %}">Excel Download</a><button type="button" onclick="window.print()">Print</button></div></div>
-<div class="table-wrap"><table><thead><tr><th>नाव</th><th>मोबाईल</th><th>सेवा</th><th>WhatsApp</th><th>नोंदणी तारीख</th><th>Action</th></tr></thead><tbody>
-{% for r in registrations %}<tr><td>{{ r.full_name }}</td><td>{{ r.mobile }}</td><td>{{ r.other_service }}</td><td>{{ r.whatsapp_group }}</td><td>{{ r.created_at|date:"d-m-Y H:i" }}</td><td><a href="{% url 'registration_detail' r.pk %}">View</a> · <a href="{% url 'registration_edit' r.pk %}">Edit</a> · <a href="{% url 'registration_delete' r.pk %}">Delete</a></td></tr>{% empty %}<tr><td colspan="6">नोंदणी उपलब्ध नाही.</td></tr>{% endfor %}
-</tbody></table></div></main>{% endblock %}
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<header class="admin-header">
+    <div>
+        <b>अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ</b>
+        <small>Admin Dashboard</small>
+    </div>
+    <a href="{% url 'admin_logout' %}">Logout</a>
+</header>
+
+<main class="wrap admin-wrap">
+
+    <h1>Admin Dashboard</h1>
+
+    <!-- DASHBOARD STATISTICS -->
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+            <span>एकूण नोंदणी</span>
+            <strong>{{ total }}</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>स्त्री</span>
+            <strong>{{ female_total }}</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>पुरुष</span>
+            <strong>{{ male_total }}</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>पारायणासाठी होय</span>
+            <strong>{{ parayan_yes }}</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>पारायणासाठी नाही</span>
+            <strong>{{ parayan_no }}</strong>
+        </div>
+
+    </div>
+
+    <!-- SEARCH AND EXPORT -->
+
+    <div class="toolbar">
+
+        <form method="get" class="search-form">
+
+            <input
+                type="text"
+                name="q"
+                value="{{ q }}"
+                placeholder="नाव किंवा मोबाईल नंबर शोधा"
+            >
+
+            <button type="submit" class="primary-btn small-btn">
+                Search
+            </button>
+
+        </form>
+
+        <div class="export-links">
+
+            <a href="{% url 'export_pdf' %}">
+                PDF Download
+            </a>
+
+            <a href="{% url 'export_excel' %}">
+                Excel Download
+            </a>
+
+            <button type="button" onclick="window.print()">
+                Print
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- REGISTRATION TABLE -->
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>अ.क्र.</th>
+                    <th>सेवेकऱ्याचे पूर्ण नाव</th>
+                    <th>लिंग</th>
+                    <th>पारायण वाचन</th>
+                    <th>मोबाईल नंबर</th>
+                    <th>पत्ता</th>
+                    <th>सेवा</th>
+                    <th>WhatsApp Group</th>
+                    <th>नोंदणी तारीख</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for r in registrations %}
+
+                <tr>
+
+                    <td>{{ forloop.counter }}</td>
+
+                    <td>{{ r.full_name }}</td>
+
+                    <td>{{ r.gender }}</td>
+
+                    <td>{{ r.parayan }}</td>
+
+                    <td>{{ r.mobile }}</td>
+
+                    <td>{{ r.address }}</td>
+
+                    <td>{{ r.other_service }}</td>
+
+                    <td>{{ r.whatsapp_group }}</td>
+
+                    <td>
+                        {{ r.created_at|date:"d-m-Y H:i" }}
+                    </td>
+
+                    <td>
+                        <a href="{% url 'registration_detail' r.pk %}">
+                            View
+                        </a>
+
+                        |
+
+                        <a href="{% url 'registration_edit' r.pk %}">
+                            Edit
+                        </a>
+
+                        |
+
+                        <a href="{% url 'registration_delete' r.pk %}">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="10">
+                        नोंदणी उपलब्ध नाही.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+{% endblock %}
