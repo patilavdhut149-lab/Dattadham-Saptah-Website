@@ -24,7 +24,7 @@ class RegistrationForm(forms.ModelForm):
                 "maxlength": "10"
             }),
             "address": forms.Textarea(attrs={
-                "placeholder": "आपला संपूर्ण पत्ता लिहा (घर / गल्ली, गाव, तालुका, जिल्हा, राज्य)",
+                "placeholder": "आपल्या गावाचे नाव लिहा",
                 "rows": 3
             }),
             "other_service": forms.RadioSelect(),
