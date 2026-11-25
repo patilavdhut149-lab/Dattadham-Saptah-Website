@@ -27,7 +27,7 @@
     {% csrf_token %}
     <div class="field"><label>सेवेकऱ्याचे पूर्ण नाव *</label>{{ form.full_name }}{{ form.full_name.errors }}</div>
     <div class="field"><label>मोबाईल नंबर *</label><div class="phone-prefix">{{ form.mobile }}</div><small>सूचना आणि अपडेट्स या नंबरवर पाठवण्यात येतील.</small>{{ form.mobile.errors }}</div>
-    <div class="field"><label>पूर्ण पत्ता *</label>{{ form.address }}{{ form.address.errors }}</div>
+    <div class="field"><label>सेवेकरी पत्ता *</label>{{ form.address }}{{ form.address.errors }}</div>
     <div class="field"><label>आपण पारायण व्यतिरिक्त दुसऱ्या सेवेत सहभागी होऊ शकता का? *</label>{{ form.other_service }}{{ form.other_service.errors }}</div>
     <div class="field whatsapp-field">
       <label>आपण केंद्राच्या अधिकृत WhatsApp Group ला Join आहात का? *</label>
