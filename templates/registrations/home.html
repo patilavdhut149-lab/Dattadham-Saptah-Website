@@ -1,85 +1,218 @@
+
 {% extends "base.html" %}
-{% load static %}\n
+{% load static %}
+
 {% block title %}दत्त जयंती सप्ताह – सेवेकरी नावनोंदणी{% endblock %}
+
 {% block content %}
+
 <header class="brand">
-  <img class="brand-logo" src="{% static 'images/swami_samarth_logo.jpg' %}" alt="श्री स्वामी समर्थ सेवा केंद्राचा लोगो">
-  <div><h2>अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ ( दिंडोरी प्रणित )</h2><p>श्री स्वामी समर्थ सेवा केंद्र, सरुड ता. शाहुवाडी, जि. कोल्हापूर</p></div>
+    <img class="brand-logo" src="{% static 'images/swami_samarth_logo.jpg' %}" alt="श्री स्वामी समर्थ सेवा केंद्राचा लोगो">
+    <div>
+        <h2>अखिल भारतीय श्री स्वामी समर्थ गुरुपीठ ( दिंडोरी प्रणित )</h2>
+        <p>श्री स्वामी समर्थ सेवा केंद्र, सरुड ता. शाहुवाडी, जि. कोल्हापूर</p>
+    </div>
 </header>
+
 <main class="wrap">
+
 <section class="hero card">
-  <span class="eyebrow">वार्षिक उत्सव</span>
-  <h1>दत्त जयंती सप्ताह</h1>
-  <h3>सेवेकरी नावनोंदणी</h3>
-  <p>दत्त जयंती सप्ताहामध्ये सहभागी होणाऱ्या सर्व सेवेकऱ्यांनी कृपया खालील माहिती भरून आपली नावनोंदणी पूर्ण करावी.</p>
-  <div class="info-panel">
-    <strong>📅 गुरुवार, दिनांक १७ डिसेंबर २०२६ ते गुरुवार, दिनांक २४ डिसेंबर २०२६</strong>
-    <p>अखंड नाम जप यज्ञ, याग व श्री गुरुचरित्र पारायण सप्ताह महोत्सव</p>
-    <div class="notice">◷ सामुदायिक गुरुचरित्र पारायण वाचन सकाळी ८:०० वाजता सुरू होईल.</div>
-    <a class="outline-btn" href="#program">☷ सप्ताह कार्यक्रम व माहिती पहा</a>
-  </div>
+    <span class="eyebrow">वार्षिक उत्सव</span>
+    <h1>दत्त जयंती सप्ताह</h1>
+    <h3>सेवेकरी नावनोंदणी</h3>
+
+    <p>दत्त जयंती सप्ताहामध्ये सहभागी होणाऱ्या सर्व सेवेकऱ्यांनी कृपया खालील माहिती भरून आपली नावनोंदणी पूर्ण करावी.</p>
+
+    <div class="info-panel">
+        <strong>📅 गुरुवार, दिनांक १७ डिसेंबर २०२६ ते गुरुवार, दिनांक २४ डिसेंबर २०२६</strong>
+        <p>अखंड नाम जप यज्ञ, याग व श्री गुरुचरित्र पारायण सप्ताह महोत्सव</p>
+
+        <div class="notice">
+            ◷ सामुदायिक गुरुचरित्र पारायण वाचन सकाळी ८:०० वाजता सुरू होईल.
+        </div>
+
+        <a class="outline-btn" href="#program">☷ सप्ताह कार्यक्रम व माहिती पहा</a>
+    </div>
 </section>
 
 <section class="card form-card" id="registration">
-  <h2>सेवेकरी नावनोंदणी अर्ज</h2>
-  <p class="muted center">सर्व माहिती काळजीपूर्वक व अचूक भरावी. (* चिन्हांकित फील्ड्स अनिवार्य आहेत.)</p>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    <div class="field"><label>सेवेकऱ्याचे पूर्ण नाव *</label>{{ form.full_name }}{{ form.full_name.errors }}</div>
-    <div class="field"><label>मोबाईल नंबर *</label><div class="phone-prefix">{{ form.mobile }}</div><small>सूचना आणि अपडेट्स या नंबरवर पाठवण्यात येतील.</small>{{ form.mobile.errors }}</div>
-    <div class="field"><label>सेवेकरी पत्ता *</label>{{ form.address }}{{ form.address.errors }}</div>
-    <div class="field"><label>आपण पारायण व्यतिरिक्त दुसऱ्या सेवेत सहभागी होऊ शकता का? *</label>{{ form.other_service }}{{ form.other_service.errors }}</div>
-    <div class="field whatsapp-field">
-      <label>आपण केंद्राच्या अधिकृत WhatsApp Group ला Join आहात का? *</label>
-      {{ form.whatsapp_group }}{{ form.whatsapp_group.errors }}
-      <div class="whatsapp-invite">
-        <img src="{% static 'images/whatsapp_group_qr.png' %}" alt="WhatsApp Group Join QR Code" class="whatsapp-qr">
-        <div class="whatsapp-invite-text">
-          <strong>आमच्या अधिकृत WhatsApp Group मध्ये सहभागी व्हा</strong>
-          <p>QR Code स्कॅन करा किंवा खालील बटणावर क्लिक करून ग्रुपमध्ये Join व्हा.</p>
-          <a class="whatsapp-btn" href="https://chat.whatsapp.com/EFNM9nrLaDO3UwUxmcexAF?s=qt&amp;p=a&amp;iam=2" target="_blank" rel="noopener">WhatsApp Group मध्ये Join व्हा</a>
+
+    <h2>सेवेकरी नावनोंदणी अर्ज</h2>
+
+    <p class="muted center">
+        सर्व माहिती काळजीपूर्वक व अचूक भरावी. (* चिन्हांकित फील्ड्स अनिवार्य आहेत.)
+    </p>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <!-- Field 1: Full Name -->
+        <div class="field">
+            <label>सेवेकऱ्याचे पूर्ण नाव *</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
         </div>
-      </div>
-    </div>
-    <p class="privacy-note">आपण दिलेली माहिती दत्त जयंती सप्ताह नियोजन, सेवेकऱ्यांशी संपर्क आणि आवश्यक सूचना देण्यासाठी वापरण्यात येईल.</p>
-    <button class="primary-btn" type="submit">नोंदणी पूर्ण करा</button>
-  </form>
+
+        <!-- Field 2: Gender -->
+        <div class="field">
+            <label>लिंग *</label>
+            {{ form.gender }}
+            {{ form.gender.errors }}
+        </div>
+
+        <!-- Field 3: Parayan -->
+        <div class="field">
+            <label>आपण दत्त जयंती सप्ताह काळात श्री गुरुचरित्र पारायण वाचनासाठी बसणार आहात का? *</label>
+            {{ form.parayan }}
+            {{ form.parayan.errors }}
+        </div>
+
+        <!-- Field 4: Mobile -->
+        <div class="field">
+            <label>मोबाईल नंबर *</label>
+            <div class="phone-prefix">
+                {{ form.mobile }}
+            </div>
+            <small>सूचना आणि अपडेट्स या नंबरवर पाठवण्यात येतील.</small>
+            {{ form.mobile.errors }}
+        </div>
+
+        <!-- Field 5: Address -->
+        <div class="field">
+            <label>सेवेकरी पत्ता *</label>
+            {{ form.address }}
+            {{ form.address.errors }}
+        </div>
+
+        <!-- Field 6: Other Service -->
+        <div class="field">
+            <label>आपण पारायण व्यतिरिक्त दुसऱ्या सेवेत सहभागी होऊ शकता का? *</label>
+            {{ form.other_service }}
+            {{ form.other_service.errors }}
+        </div>
+
+        <!-- Field 7: WhatsApp Group -->
+        <div class="field whatsapp-field">
+
+            <label>आपण केंद्राच्या अधिकृत WhatsApp Group ला Join आहात का? *</label>
+
+            {{ form.whatsapp_group }}
+            {{ form.whatsapp_group.errors }}
+
+            <div class="whatsapp-invite">
+
+                <img src="{% static 'images/whatsapp_group_qr.png' %}"
+                     alt="WhatsApp Group Join QR Code"
+                     class="whatsapp-qr">
+
+                <div class="whatsapp-invite-text">
+
+                    <strong>आमच्या अधिकृत WhatsApp Group मध्ये सहभागी व्हा</strong>
+
+                    <p>QR Code स्कॅन करा किंवा खालील बटणावर क्लिक करून ग्रुपमध्ये Join व्हा.</p>
+
+                    <a class="whatsapp-btn"
+                       href="https://chat.whatsapp.com/EFNM9nrLaDO3UwUxmcexAF?s=qt&amp;p=a&amp;iam=2"
+                       target="_blank"
+                       rel="noopener">
+                        WhatsApp Group मध्ये Join व्हा
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <p class="privacy-note">
+            आपण दिलेली माहिती दत्त जयंती सप्ताह नियोजन, सेवेकऱ्यांशी संपर्क आणि आवश्यक सूचना देण्यासाठी वापरण्यात येईल.
+        </p>
+
+        <button class="primary-btn" type="submit">नोंदणी पूर्ण करा</button>
+
+    </form>
 </section>
 
 <section class="card program-card" id="program">
-<h2>दत्त जयंती सप्ताह – कार्यक्रम व माहिती</h2>
-<p class="program-date">१७ डिसेंबर २०२६ ते २४ डिसेंबर २०२६</p>
-<details open><summary>१. सप्ताह कार्यक्रमाची रूपरेषा</summary><div class="detail-body">
-{% for day,desc in week_days %}
-<div class="program-item"><b>{{ day }}</b><p>{{ desc }}</p></div>
-{% endfor %}
-</div></details>
-<details><summary>२. नित्यसेवा दैनंदिन कार्यक्रम</summary><div class="detail-body">
-{% for item in daily_items %}<div class="program-item"><b>{{ item.0 }}</b><p>{{ item.1 }}</p></div>{% endfor %}
-</div></details>
-<details><summary>३.सप्ताहातील अतिउच्च अनमोल सेवा – प्रहारे विभाग</summary><div class="detail-body">
-<p><b>प.पू. गुरुमाऊली म्हणतात:</b></p>
-<blockquote>"प्रहारे म्हणजे संपूर्ण सप्ताहाचा आत्मा आहे. जो कोण भाग्यवान सेवेकरी सलग ७ दिवस दररोज १ तास प्रहारेची सेवा रुजु करेल त्याला संपूर्ण सप्ताहाचे पुण्य मिळेल. सप्ताहात दररोज १ तास प्रहारेची सेवा केल्याने भविष्यात कोणतेही कौंटुबिक प्रश्न राहत नाहीत असे सांगितले आहे.अखंड 24 तासात प्रहरेची सेवा आपल्या वेळेनुसार रुजू करावी."</blockquote>
-<p>सप्ताहात दररोज १ तास प्रहारेची सेवा करायची.</p>
-<p><b>प्रहारे सेवांचे प्रकार</b></p>
-<ol><li>अखंड विणावादन</li><li>अखंड जपमाळ</li><li>अखंड सारामृत वाचन</li></ol>
-<p><b>सेवेसाठी आवाहन</b></p>
-<p>आपण तर यावेत, आपल्या सोबत प्रत्येकाने नवीन २ भाविकांना घेऊन यावे. सप्ताहात श्री गुरुचरित्र पठणामुळे व प्रहरेमुळे श्री स्वामी कृपा प्राप्त होते. म्हणून श्री स्वामी समर्थ सेवा केंद्रात जाऊन अतिउच्च कोटीची सेवा गुरुमाऊली अर्पण करावी.</p>
-</div></details>
-<details><summary>४. सेवेकऱ्यांसाठी आवश्यक सूचना</summary><div class="detail-body">
-<p><b>पारायणासाठी आवश्यक साहित्य</b></p>
-<p>पारायणासाठी स्वतःचा पाट, भगवे किंवा लाल कपडा (कापड), बसायला आसन, श्री गुरु चरित्र पोथी, श्री स्वामी चरित्र सारामृत, श्री दुर्गा सप्तशती, पोथी, नियमपुस्तक, मल्हारी सहस्रावली यथेष्ट घेऊन येणे.</p>
-<p><b>महत्त्वाचे नियम व सूचना</b></p>
-<ol>
-<li>आवश्यक वस्तू स्वतः सोबत आणाव्यात. शक्य असल्यास पुस्तक उपलब्ध असेल तर ते सोबत आणावे.</li>
-<li>पारायणासाठी वस्तू उपलब्ध नसल्यास सेवेकऱ्यांसाठी आवश्यक साहित्य स्टॉलवर उपलब्ध असेल.</li>
-<li>पारायणासाठी बसणाऱ्या सेवेकऱ्यांनी रोज ३ सारामृत पाठाचे पठण व जप करून त्याची नोंद ठेवण्याची वहीत करणे गरजेचे आहे.</li>
-<li>ज्या सेवेकऱ्यांना पारायणासाठी बसायचे आहे त्यांनी लवकरात लवकर नावनोंदणी करणे आवश्यक आहे.</li>
-<li>पारायणासाठी बसणाऱ्या सेवेकऱ्यांनी सायंकाळच्या नित्य सेवेला हजर राहणे गरजेचे आहे.</li>
-<li>पारायणासाठी बैठक व्यवस्था ही चौंडेश्वरी मंदिरात, तळ्याशेजारी करण्यात आली आहे. </li>
-<li>बैठक व्यवस्था ही १६ डिसेंबर २०२६ रोजी निश्चित करण्यात येणार आहे.</li>
-</ol>
-</div></details>
+
+    <h2>दत्त जयंती सप्ताह – कार्यक्रम व माहिती</h2>
+
+    <p class="program-date">१७ डिसेंबर २०२६ ते २४ डिसेंबर २०२६</p>
+
+    <details open>
+        <summary>१. सप्ताह कार्यक्रमाची रूपरेषा</summary>
+        <div class="detail-body">
+            {% for day,desc in week_days %}
+                <div class="program-item">
+                    <b>{{ day }}</b>
+                    <p>{{ desc }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </details>
+
+    <details>
+        <summary>२. नित्यसेवा दैनंदिन कार्यक्रम</summary>
+        <div class="detail-body">
+            {% for item in daily_items %}
+                <div class="program-item">
+                    <b>{{ item.0 }}</b>
+                    <p>{{ item.1 }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </details>
+
+    <details>
+        <summary>३. सप्ताहातील अतिउच्च अनमोल सेवा – प्रहारे विभाग</summary>
+        <div class="detail-body">
+
+            <p><b>प.पू. गुरुमाऊली म्हणतात:</b></p>
+
+            <blockquote>
+                "प्रहारे म्हणजे संपूर्ण सप्ताहाचा आत्मा आहे. जो कोण भाग्यवान सेवेकरी सलग ७ दिवस दररोज १ तास प्रहारेची सेवा रुजु करेल त्याला संपूर्ण सप्ताहाचे पुण्य मिळेल. सप्ताहात दररोज १ तास प्रहारेची सेवा केल्याने भविष्यात कोणतेही कौंटुबिक प्रश्न राहत नाहीत असे सांगितले आहे.अखंड 24 तासात प्रहरेची सेवा आपल्या वेळेनुसार रुजू करावी."
+            </blockquote>
+
+            <p>सप्ताहात दररोज १ तास प्रहारेची सेवा करायची.</p>
+
+            <p><b>प्रहारे सेवांचे प्रकार</b></p>
+
+            <ol>
+                <li>अखंड विणावादन</li>
+                <li>अखंड जपमाळ</li>
+                <li>अखंड सारामृत वाचन</li>
+            </ol>
+
+            <p><b>सेवेसाठी आवाहन</b></p>
+
+            <p>आपण तर यावेत, आपल्या सोबत प्रत्येकाने नवीन २ भाविकांना घेऊन यावे. सप्ताहात श्री गुरुचरित्र पठणामुळे व प्रहरेमुळे श्री स्वामी कृपा प्राप्त होते. म्हणून श्री स्वामी समर्थ सेवा केंद्रात जाऊन अतिउच्च कोटीची सेवा गुरुमाऊली अर्पण करावी.</p>
+
+        </div>
+    </details>
+
+    <details>
+        <summary>४. सेवेकऱ्यांसाठी आवश्यक सूचना</summary>
+        <div class="detail-body">
+
+            <p><b>पारायणासाठी आवश्यक साहित्य</b></p>
+
+            <p>पारायणासाठी स्वतःचा पाट, भगवे किंवा लाल कपडा (कापड), बसायला आसन, श्री गुरु चरित्र पोथी, श्री स्वामी चरित्र सारामृत, श्री दुर्गा सप्तशती, पोथी, नियमपुस्तक, मल्हारी सहस्रावली यथेष्ट घेऊन येणे.</p>
+
+            <p><b>महत्त्वाचे नियम व सूचना</b></p>
+
+            <ol>
+                <li>आवश्यक वस्तू स्वतः सोबत आणाव्यात. शक्य असल्यास पुस्तक उपलब्ध असेल तर ते सोबत आणावे.</li>
+                <li>पारायणासाठी वस्तू उपलब्ध नसल्यास सेवेकऱ्यांसाठी आवश्यक साहित्य स्टॉलवर उपलब्ध असेल.</li>
+                <li>पारायणासाठी बसणाऱ्या सेवेकऱ्यांनी रोज ३ सारामृत पाठाचे पठण व जप करून त्याची नोंद ठेवण्याची वहीत करणे गरजेचे आहे.</li>
+                <li>ज्या सेवेकऱ्यांना पारायणासाठी बसायचे आहे त्यांनी लवकरात लवकर नावनोंदणी करणे आवश्यक आहे.</li>
+                <li>पारायणासाठी बसणाऱ्या सेवेकऱ्यांनी सायंकाळच्या नित्य सेवेला हजर राहणे गरजेचे आहे.</li>
+                <li>पारायणासाठी बैठक व्यवस्था ही चौंडेश्वरी मंदिरात, तळ्याशेजारी करण्यात आली आहे.</li>
+                <li>बैठक व्यवस्था ही १६ डिसेंबर २०२६ रोजी निश्चित करण्यात येणार आहे.</li>
+            </ol>
+
+        </div>
+    </details>
+
 </section>
+
 </main>
+
 {% endblock %}
